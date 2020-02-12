@@ -1,4 +1,4 @@
-# Elasticsearch Autocomplete
+# Elasticsearch Autocomplete Standalone Microsite
 
 This is a simple standalone application that can be independently deployed to provide fast autocomplete functionality using a REST API. The API is powered by expressjs (node). It supports maintaining multiple indexes so that a single deployment can be used for multiple separate datasets with a minimal yet extensible document structure.
 
