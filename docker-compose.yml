@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  api: # Node.js App
+    container_name: api-autocomplete
+    build: .
+    ports:
+      - "3002:3002" # Expose API port
+    environment: # Set ENV vars
+     - elasticsearch=elasticsearch:9200
+     - port=3002
+     - token=thisismytokenwhichicanchange
+    depends_on:
+     - elasticsearch 
+
+  elasticsearch: # Elasticsearch Instance
+    container_name: es-autocomplete
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
+    volumes: # Persist ES data in seperate "esdata" volume
+      - esdata:/usr/share/elasticsearch/data
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ports: # Expose Elasticsearch ports
+      - "9300:9300"
+      - "9200:9200"
+
+volumes: # Define seperate volume for Elasticsearch data
+  esdata:

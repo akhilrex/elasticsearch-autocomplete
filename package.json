@@ -1,0 +1,19 @@
+{
+  "name": "elasticsearch-node-autocomplete",
+  "version": "1.0.0",
+  "description": "This is a simple standalone application that can be independently deployed to provide fast autocomplete functionality using a REST API. The API is powered by expressjs (node). It supports maintaining multiple indexes so that a single deployment can be used for multiple separate datasets with a minimal yet extensible document structure.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Akhil Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "elasticsearch": "^16.6.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "morgan": "^1.9.1",
+    "permit": "^0.2.4"
+  }
+}
