@@ -88,6 +88,11 @@ The admin api used Bearer authentication with the token defined in the environme
 	"keyword":"green tshirt",
 	"weight":2,
 	"meta":{"id":10}
+},
+{
+	"keyword":"green pant",
+	"weight":1,
+	"meta":{"id":11,"source":"facebook"}
 }]
 ```
 
@@ -110,7 +115,7 @@ Use this endpoint to simply bulk import an array of keywords which do not requir
 ```json
 ["green shirt","blue shirt","red short"]
 ```
-### Delete Singe Document
+### Delete Single Document
 
 **URL** : `/admin/indexes/:indexName/:docId`
 
