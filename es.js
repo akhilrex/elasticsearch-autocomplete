@@ -114,6 +114,19 @@ function getSuggestions(indexName, text, size) {
     });
 }
 
+
+function deleteByQuery(indexName, query) {
+    return es.deleteByQuery({
+        index: indexName,
+        type: 'doc',
+        body: {
+            query: {
+                match: query
+            }
+        }
+    });
+}
+
 function getStat(indexName, id) {
     return es.search({
         index: indexName,
@@ -137,3 +150,4 @@ exports.deleteDocument = deleteDocument;
 exports.getSuggestions = getSuggestions;
 exports.getStat = getStat;
 exports.getDefaultObject = getDefaultObject;
+exports.deleteByQuery= deleteByQuery;

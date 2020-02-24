@@ -64,6 +64,16 @@ router.delete('/indexes/:index/:docid', function (req, res, next) {
 
 });
 
+router.post('/indexes/:index/delete', function (req, res, next) {
+
+    elasticsearch.deleteByQuery(req.params.index,req.body).then(
+        function (result) {
+            res.json(result)
+        }
+    ).catch(error => res.status(500).json(error));
+
+});
+
 router.post('/indexes/:index/simplebulk', function (req, res, next) {
     const data = req.body;
 
