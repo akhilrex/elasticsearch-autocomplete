@@ -8,7 +8,7 @@ const APP_PORT = process.env.port;
 var app = express();
 
 app.use(morgan('combined'));
-app.use(require('body-parser').json());
+app.use(require('body-parser').json({ limit: '20mb' }));
 
 const permit = new Bearer({
     basic: 'username', // Also allow a Basic Auth username as a token.
