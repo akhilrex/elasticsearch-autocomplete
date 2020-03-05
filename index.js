@@ -3,10 +3,11 @@ const express = require('express');
 const morgan= require('morgan');
 const { Bearer} = require('permit');
 const auth = require('./auth');
+const cors = require('cors');
 const APP_PORT = process.env.port;
 
 var app = express();
-
+app.use(cors());
 app.use(morgan('combined'));
 app.use(require('body-parser').json({ limit: '20mb' }));
 
