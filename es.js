@@ -69,8 +69,8 @@ function addDocument(indexName, documents) {
     var items = [];
 
     documents.forEach(element => {
-        let keyCopy= [element.keyword];
-        element.keyword={input:keyCopy,weight:element.weight};
+        let keyCopy = getTokenizedArray(element.keyword);
+        element.keyword = { input: keyCopy, weight: element.weight };
         items.push({ index: { _index: indexName } }, element);
     });
 
@@ -79,6 +79,19 @@ function addDocument(indexName, documents) {
         type: 'doc',
         refresh: "true"
     });
+}
+
+function getTokenizedArray(keyword) {
+    let toReturn = [];
+    let split = keyword.split(' ');
+    for (var i = 0; i < split.length; i++) {
+        let toAdd = split.slice(i).join(' ');
+        if (toAdd && toAdd.trim()) {
+            toReturn.push(toAdd)
+        }
+    }
+    return toReturn;
+
 }
 
 function deleteDocument(indexName, docId) {
@@ -150,4 +163,4 @@ exports.deleteDocument = deleteDocument;
 exports.getSuggestions = getSuggestions;
 exports.getStat = getStat;
 exports.getDefaultObject = getDefaultObject;
-exports.deleteByQuery= deleteByQuery;
+exports.deleteByQuery = deleteByQuery;
